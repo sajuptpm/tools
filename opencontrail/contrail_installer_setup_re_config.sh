@@ -1,8 +1,9 @@
 
 AUTH_HOST=192.168.56.101
 AUTH_URL=http://$AUTH_HOST:5000/v2.0
+ADMIN_USER=admin
 ADMIN_PASSWORD=nova
-
+ADMIN_TENANT_NAME=admin
 
 
 
@@ -12,6 +13,46 @@ function replace_ContrailPlugin_ini_conf()
 	check_replace_value $file KEYSTONE auth_host $AUTH_HOST
         check_replace_value $file KEYSTONE auth_url $AUTH_URL
 	check_replace_value $file KEYSTONE admin_password $ADMIN_PASSWORD
+}
+
+
+function replace_contrail_plugin_ini_conf()
+{
+        file="/etc/contrail/contrail_plugin.ini"
+        check_replace_value $file KEYSTONE auth_host $AUTH_HOST
+        check_replace_value $file KEYSTONE auth_url $AUTH_URL
+        check_replace_value $file KEYSTONE admin_password $ADMIN_PASSWORD
+}
+
+
+function replace_contrail_api_conf_conf()
+{
+        file="/etc/contrail/contrail-api.conf"
+        check_replace_value $file KEYSTONE auth_host $AUTH_HOST
+        check_replace_value $file KEYSTONE admin_password $ADMIN_PASSWORD
+}
+
+
+function replace_contrail_schema_conf_conf()
+{
+        file="/etc/contrail/contrail-schema.conf"
+        check_replace_value $file KEYSTONE admin_password $ADMIN_PASSWORD
+}
+
+
+function replace_svc_monitor_conf_conf()
+{
+        file="/etc/contrail/svc-monitor.conf"
+        check_replace_value $file KEYSTONE admin_password $ADMIN_PASSWORD
+}
+
+
+function replace_contrail_snmp_collector_conf_conf()
+{
+        file="/etc/contrail/contrail-snmp-collector.conf"
+        check_replace_value $file KEYSTONE admin_user $ADMIN_USER
+        check_replace_value $file KEYSTONE admin_tenant_name $ADMIN_TENANT_NAME
+        check_replace_value $file KEYSTONE admin_password $ADMIN_PASSWORD
 }
 
 
@@ -71,9 +112,24 @@ function check_replace_value()
 
 
 
-########################
+##########Function Calls##############
 
 replace_ContrailPlugin_ini_conf
+replace_contrail_plugin_ini_conf
+replace_contrail_api_conf_conf
+replace_contrail_schema_conf_conf
+replace_svc_monitor_conf_conf
+replace_contrail_snmp_collector_conf_conf
+
+########################
+
+
+
+########################
+
+
+
+########################
 
 
 
