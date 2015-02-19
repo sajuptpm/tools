@@ -1,10 +1,12 @@
 
+#IP of Keystone host 
 AUTH_HOST=192.168.56.101
+#Keystone endpoint url
 AUTH_URL=http://$AUTH_HOST:5000/v2.0
 ADMIN_USER=admin
 ADMIN_PASSWORD=nova
 ADMIN_TENANT_NAME=admin
-
+CONTRAIL_SRC_DIR=/opt/stack/contrail
 
 
 function replace_ContrailPlugin_ini_conf()
@@ -55,7 +57,10 @@ function replace_contrail_snmp_collector_conf_conf()
         check_replace_value $file KEYSTONE admin_password $ADMIN_PASSWORD
 }
 
-
+function patch_contrail_web_core_config_global_js()
+{
+	sed -ie "s/config\.identityManager\.ip.*$/config\.identityManager\.ip = '$AUTH_HOST';/" $CONTRAIL_SRC_DIR/contrail-web-core/config/config.global.js
+}
 
 
 
@@ -121,8 +126,10 @@ replace_contrail_schema_conf_conf
 replace_svc_monitor_conf_conf
 replace_contrail_snmp_collector_conf_conf
 
-########################
+patch_contrail_web_core_config_global_js
 
+
+########################
 
 
 ########################
