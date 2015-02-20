@@ -60,6 +60,8 @@ function replace_contrail_snmp_collector_conf_conf()
 function patch_contrail_web_core_config_global_js()
 {
 	sed -ie "s/config\.identityManager\.ip.*$/config\.identityManager\.ip = '$AUTH_HOST';/" $CONTRAIL_SRC_DIR/contrail-web-core/config/config.global.js
+	sed -ie "s/config\.featurePkg\.webController\.path.*$/config\.featurePkg\.webController\.path = '${CONTRAIL_SRC_DIR//\//\/}\\/contrail-web-controller';/" $CONTRAIL_SRC_DIR/contrail-web-core/config/config.global.js
+
 }
 
 
@@ -129,7 +131,9 @@ replace_contrail_snmp_collector_conf_conf
 patch_contrail_web_core_config_global_js
 
 
-########################
+##########Tips##############
+
+#http://fosshelp.blogspot.in/2015/02/opencontrail-ui-error-install-feature.html
 
 
 ########################
