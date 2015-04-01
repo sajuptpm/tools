@@ -1,0 +1,16 @@
+set textwidth=79    "lines longer than 79 columns will be broken
+set shiftwidth=4    "operation >> indents 4 columns; << unindents 4 columns
+set tabstop=4       "an hard TAB displays as 4 columns
+set expandtab       "insert spaces when hitting TABs
+set softtabstop=4   "insert/delete 4 spaces when hitting a TAB/BACKSPACE
+set shiftround      "round indent to multiple of ‘shiftwidth’
+set autoindent      "align the new line indent with the previous line
+set showmatch
+set incsearch   " search as characters are entered
+set hlsearch    " highlight matches
+set undolevels=1500     "how many times the user can undo
+set wildmenu    "Better command-line completion
+"set mouse=a    "Enable use of the mouse for all modes
+
+
+
