@@ -10,14 +10,14 @@ then
 fi
 
 ##Create rules
-for x in {1..95}
+for x in {1..2}
 do
 	#echo $x
 	neutron security-group-rule-create --protocol tcp --port-range-min 22 --port-range-max 22 --direction ingress $SECURITY_GROUP_NAME
 done
 
 #Find number of rules in the security group
-num_rules=$(neutron security-group-rule-list | awk '/sec1/' | wc -l)
+num_rules=$(neutron security-group-rule-list | awk "/$SECURITY_GROUP_NAME/" | wc -l)
 
 echo ""
 echo "number of rules in the security group:$SECURITY_GROUP_NAME is :$num_rules"
