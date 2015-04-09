@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #Delete all ports one by one
 
 for x in $(neutron port-list | awk  '{print $2}'); 

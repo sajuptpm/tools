@@ -1,3 +1,4 @@
+#!/bin/bash
 
 #### To fix network issue in the contrail setup vm ####
 #sudo rm /etc/udev/rules.d/70-persistent-net.rules

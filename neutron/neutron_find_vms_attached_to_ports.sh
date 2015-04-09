@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #Find Device/VM attached to all ports
 #
 
