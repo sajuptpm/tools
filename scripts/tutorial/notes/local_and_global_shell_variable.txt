@@ -1,0 +1,21 @@
+
+#Create new local variable 'vech' with Bus as value in first shell
+$vech=Bus
+
+#Print the contains of variable vech
+$echo $vech
+
+#Export first shells variable to second shell i.e. global varible
+$export vech
+
+#Now load second shell in memory (Old shell's variable is accessed from second
+shell, if they are exported )
+$/bin/bash
+
+#Print the contains of variable vech
+$echo $vech
+
+#Exit from second shell return to first shell
+$ exit
+
+

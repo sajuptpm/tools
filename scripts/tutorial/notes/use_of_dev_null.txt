@@ -1,0 +1,12 @@
+
+/dev/null - Use to send unwanted output of program
+
+Example:
+$ ls > /dev/null
+Output of above command is not shown on screen its send to this special file.
+The /dev directory contains other device files. The files in this directory
+mostly represent peripheral devices such disks like floppy disk, sound card,
+line printers etc. See the file system tutorial for more information on Linux
+disk, partition and file system.
+
+

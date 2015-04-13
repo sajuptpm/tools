@@ -1,0 +1,86 @@
+
+=======================
+
+* Double quote (?): Variables are expanded when enclosed in double quotes
+
+* Single quote (?): Variables within single quotes are not expanded
+
+* Backward quote (`): Commands within backward quotes are executed and their output substituted into that location.
+
+The following examples should help make the differences between the types of quotes more evident.
+
+$ myname='Terry Clark'
+$ echo 'My name is $myname'
+My name is $myname
+$ echo "My name is $myname"
+My name is Terry Clark
+$ echo 'The name of this computer is `hostname`'
+The name of this computer is `hostname`
+$ echo "The name of this computer is `hostname`"
+The name of this computer is appsvr.mytec.com
+
+=======================
+
+For example purpose, consider that variable foo contains uname.
+
+* echo "$foo" outputs uname, substituting variables in text.
+(For a literal $ character inside " quotes, use \$; for a literal ", use \".)
+
+* echo '$foo' outputs $foo, the exact string.
+(Even ' can't be escaped as \' inside ' quotes. But you can use '\''.)
+
+* echo `$foo` outputs Linux, execute the content of the variable and echo outputs it.
+
+=======================
+
+This is a backtick. Backtick is not a quotation sign, it has a very special meaning. Everything you type between backticks is evaluated (executed) by the shell before the main command (like chown in your examples), and the output of that execution is used by that command, just as if you'd type that output at that place in the command line.
+
+So, what
+
+sudo chown `id -u` /somedir
+
+effectively runs (depending on your user ID) is:
+
+sudo chown 1000 /somedir
+
+=======================
+
+http://www.gnu.org/software/bash/manual/html_node/Command-Substitution.html
+
+Command substitution allows the output of a command to replace the command itself. Command substitution occurs when a command is enclosed as follows:
+
+$(command)  <===  it is a newer POSIX form, it is easier to read
+
+or
+
+`command` <==== Older form, the backtick characters have to be backslash-escaped in the nested (inner) command substitutions
+
+Bash performs the expansion by executing command and replacing the command substitution with the standard output of the command, with any trailing newlines deleted. Embedded newlines are not deleted, but they may be removed during word splitting. The command substitution $(cat file) can be replaced by the equivalent but faster $(< file).
+
+When the old-style backquote form of substitution is used, backslash retains its literal meaning except when followed by ‘$’, ‘`’, or ‘\’. The first backquote not preceded by a backslash terminates the command substitution. When using the $(command) form, all characters between the parentheses make up the command; none are treated specially.
+
+Command substitutions may be nested. To nest when using the backquoted form, escape the inner backquotes with backslashes.
+
+If the substitution appears within double quotes, word splitting and filename expansion are not performed on the results. 
+
+=======================
+
+One thing to mention is that you should escape backquote to nest commands:
+
+$ echo $(echo hello $(echo word))
+hello word    
+
+$ echo `echo hello \`echo word\``
+hello word
+
+=======================
+
+
+
+
+
+
+
+
+
+
