@@ -17,3 +17,12 @@ sudo openssl x509 -inform DES -in DigiCertHighAssuranceEVRootCA.crt -out DigiCer
 #in this c_rehash'ed format. 
 sudo c_rehash .
 
+
+
+#############
+
+#http://askubuntu.com/questions/73287/how-do-i-install-a-root-certificate
+##Let Ubuntu add the '.crt' file's path relative to /usr/share/ca-certificates to /etc/ca-certificates.conf
+#sudo dpkg-reconfigure ca-certificates
+
+
