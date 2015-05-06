@@ -87,8 +87,10 @@ def get_routes_of_all_route_tables(conn):
         	print "\n\nRoute Table:"
 		print rt_obj.get_fq_name()
         	print "Routes:"
-		for r in rt_obj.get_routes().route:
-			print r.get_prefix(), "----", r.get_next_hop(), "----", r.get_next_hop_type()
+		routes = rt_obj.get_routes()
+		if routes:
+			for r in routes.route:
+				print r.get_prefix(), "----", r.get_next_hop(), "----", r.get_next_hop_type()
 ####
 get_routes_of_all_route_tables(conn)
 
