@@ -1,0 +1,61 @@
+
+1)
+Script to list all keyspaces and its column families.
+$python system_manager.py 
+
+2)
+Script to list all "row keys" and its data, of a column family.
+$python data_manager.py -k keyspace -c column_family
+$python data_manager.py -k config_db_uuid -c obj_fq_name_table
+$python data_manager.py -k config_db_uuid -c obj_uuid_table
+
+3)
+Find details of a virtual network from cassandra database.
+
+##List All Virtual Networks and find its ID, from column family "obj_fq_name_table".
+$python get_data.py -k config_db_uuid -c obj_fq_name_table -r virtual_network
+
+##Show details of a Virtual Network using its ID, from column family "obj_uuid_table".
+$python get_data.py -k config_db_uuid -c obj_uuid_table -r 1fd037a4-95af-4ae2-bd41-36ad5c1fc6dc
+
+##Show details of a Virtual Network using its ID and Show only the selected column "parent_type", from column family "obj_uuid_table".
+$python get_data.py -k config_db_uuid -c obj_uuid_table -r 1fd037a4-95af-4ae2-bd41-36ad5c1fc6dc -f parent_type
+
+##Show details of a Virtual Network using its ID and Show only the selected columns "parent_type" and "fq_name",from column family "obj_uuid_table".
+$python get_data.py -k config_db_uuid -c obj_uuid_table -r 1fd037a4-95af-4ae2-bd41-36ad5c1fc6dc -f parent_type -f fq_name
+
+4)
+Query From Column Families in the "config_db_uuid" keyspace.
+$python data_manager.py -k config_db_uuid -c obj_fq_name_table
+$python data_manager.py -k config_db_uuid -c obj_uuid_table
+
+5)
+Query From Column Families in the "to_bgp_keyspace" keyspace.
+$python data_manager.py -k to_bgp_keyspace -c route_target_table <== IMP
+$python data_manager.py -k to_bgp_keyspace -c service_chain_table
+$python data_manager.py -k to_bgp_keyspace -c service_chain_ip_address_table
+$python data_manager.py -k to_bgp_keyspace -c service_chain_uuid_table
+
+6)
+Query From Column Families in the "DISCOVERY_SERVER" keyspace.
+$python data_manager.py -k DISCOVERY_SERVER -c discovery  <== IMP
+
+7)
+Query From Column Families in the "svc_monitor_keyspace" keyspace.
+$python data_manager.py -k svc_monitor_keyspace -c service_instance_table
+
+8)
+Query From Column Families in the "useragent" keyspace. (Database used by Compute agent)
+#python data_manager.py -k useragent -c useragent_keyval_table <== IMP
+
+9)
+Query From Column Families in the "system" keyspace.
+$python data_manager.py -k system -c IndexInfo
+$python data_manager.py -k system -c NodeIdInfo
+$python data_manager.py -k system -c schema_keyspaces <== IMP
+$python data_manager.py -k system -c hints
+
+
+
+
+

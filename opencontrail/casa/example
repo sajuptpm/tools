@@ -1,0 +1,46 @@
+
+
+1)
+Find details of a virtual network from cassandra database.
+
+a)
+$python get_data.py -k config_db_uuid -c obj_fq_name_table -r virtual_network
+
+Data of Row Key:virtual_network: ==> {'default-domain:Mayank:mayank-net:cbf30664-0c41-4bd9-a89e-d2cf20a0fdf9': u'null',
+ 'default-domain:admin:public:8e916a18-931b-4d4d-a9ea-d3d0fe2804cb': u'null',
+ 'default-domain:default-project:__link_local__:de87bf98-dab1-4d2f-b073-9fb54cdf370c': u'null',
+ 'default-domain:default-project:default-virtual-network:6c1ab6d4-b81d-4ddd-a711-436c6c1ec939': u'null',
+ 'default-domain:default-project:ip-fabric:26c95b86-980c-411c-82e2-f1eda757663b': u'null',
+ 'default-domain:demo:nw1:1fd037a4-95af-4ae2-bd41-36ad5c1fc6dc': u'null'}
+
+b)
+$python get_data.py -k config_db_uuid -c obj_uuid_table -r 1fd037a4-95af-4ae2-bd41-36ad5c1fc6dc
+Data of Row Key:1fd037a4-95af-4ae2-bd41-36ad5c1fc6dc: ==> {'backref:instance_ip:2364d972-45ce-452f-b10e-50c5a125631f': u'{"is_weakref": false, "attr": null}',
+ 'backref:instance_ip:8324dc80-db40-4eaa-9568-b0a8c2397529': u'{"is_weakref": false, "attr": null}',
+ 'backref:instance_ip:97d618f8-3d8e-410a-ad79-bc381b8f5fd9': u'{"is_weakref": false, "attr": null}',
+ 'backref:virtual_machine_interface:1166d9a3-6e15-450d-bbea-4b929e219499': u'{"is_weakref": false, "attr": null}',
+ 'backref:virtual_machine_interface:7a3e7b96-3625-4024-bb1f-f2000a44570b': u'{"is_weakref": false, "attr": null}',
+ 'backref:virtual_machine_interface:af39c3c0-bfeb-45dc-85eb-d7644624bf01': u'{"is_weakref": false, "attr": null}',
+ 'children:routing_instance:6a2c9986-f2a3-4fe4-b538-c60c1115cfc6': u'null',
+ 'fq_name': u'["default-domain", "demo", "nw1"]',
+ 'parent:project:2d628eea-ba99-44ca-8b20-208510f9f231': u'null',
+ 'parent_type': u'"project"',
+ 'prop:display_name': u'"nw1"',
+ 'prop:id_perms': u'{"enable": true, "description": null, "created": "2015-05-08T07:16:34.618234", "creator": null, "uuid": {"uuid_mslong": 2292393390357039842, "uuid_lslong": 13637241264857401052}, "user_visible": true, "last_modified": "2015-05-08T07:16:34.764512", "permissions": {"owner": "cloud-admin", "owner_access": 7, "other_access": 7, "group": "admin", "group_access": 7}}',
+ 'prop:is_shared': u'false',
+ 'prop:router_external': u'false',
+ 'prop:virtual_network_properties': u'{"network_id": 5, "vxlan_network_identifier": null, "forwarding_mode": null, "allow_transit": null, "rpf": null}',
+ 'ref:network_ipam:5f88e6e0-fae7-4332-b3e3-55337016334c': u'{"attr": {"ipam_subnets": [{"subnet": {"ip_prefix": "11.1.1.0", "ip_prefix_len": 28}, "addr_from_start": true, "enable_dhcp": true, "default_gateway": "11.1.1.1", "dns_nameservers": [], "dhcp_option_list": {"dhcp_option": [{"dhcp_option_value": "8.8.8.8", "dhcp_option_name": "6"}]}, "subnet_uuid": "36a6b455-7774-4ab2-849f-e8eca9e73b75", "allocation_pools": [], "host_routes": null, "dns_server_address": "11.1.1.2", "subnet_name": "subnet1"}], "host_routes": null}}',
+ 'type': u'"virtual_network"'}
+
+c)
+$python get_data.py -k config_db_uuid -c obj_uuid_table -r 1fd037a4-95af-4ae2-bd41-36ad5c1fc6dc -f parent_type
+Data of Row Key:1fd037a4-95af-4ae2-bd41-36ad5c1fc6dc: ==> {'parent_type': u'"project"'}
+
+d)
+#python get_data.py -k config_db_uuid -c obj_uuid_table -r 1fd037a4-95af-4ae2-bd41-36ad5c1fc6dc -f parent_type -f fq_name
+Data of Row Key:1fd037a4-95af-4ae2-bd41-36ad5c1fc6dc: ==> {'fq_name': u'["default-domain", "demo", "nw1"]', 'parent_type': u'"project"'}
+
+
+
+

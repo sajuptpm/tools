@@ -1,4 +1,4 @@
-
+#Script to list all keyspaces and its column families
 #https://pycassa.github.io/pycassa/api/pycassa/system_manager.html
 
 from pprint import pprint

@@ -1,3 +1,4 @@
+#Script to list all "row keys" and its data, of a column family.
 
 import sys, getopt
 from pprint import pprint
@@ -62,16 +63,19 @@ def find_how_many_columns_are_in_list_of_rows(col_fam_conn, row_keys):
 
 def main(argv):
 
+	KEYSPACE = None
+	COLUMN_FAMILY_NAME = None
+
 	optlist, args = getopt.getopt(argv, 'k:c:')
-	if len(optlist) == 2:
-		for opt, arg in optlist:
-			if opt == "-k":
-				KEYSPACE = arg
-			if opt == "-c":
-				COLUMN_FAMILY_NAME = arg
-	else:
-		KEYSPACE = 'config_db_uuid' #name of database
-		COLUMN_FAMILY_NAME = 'obj_fq_name_table' #name of table
+	for opt, arg in optlist:
+		if opt == "-k":
+			KEYSPACE = arg
+		if opt == "-c":
+			COLUMN_FAMILY_NAME = arg
+
+	if not KEYSPACE or not COLUMN_FAMILY_NAME:
+		usage()
+		sys.exit(2)
 
 	pool = ConnectionPool(KEYSPACE, HOST_AND_PORT)
 	col_fam_conn = ColumnFamily(pool, COLUMN_FAMILY_NAME)
@@ -83,10 +87,14 @@ def main(argv):
 	for rowkey in row_keys:
 		get_data_with_row_key(col_fam_conn, rowkey)
 
+def usage():
+	print "Usage: $python data_manager.py -k keyspace -c column_family"
 
 
 if __name__ == "__main__":
-	#How to run :$python data_manager.py -k config_db_uuid -c obj_fq_name_table
+	#Script to list all "row keys" and its data, of a column family.
+	#$python data_manager.py -k keyspace -c column_family
+	#$python data_manager.py -k config_db_uuid -c obj_fq_name_table
 	#$python data_manager.py -k config_db_uuid -c obj_uuid_table
 	main(sys.argv[1:])
 
