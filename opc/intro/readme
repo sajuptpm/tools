@@ -1,0 +1,36 @@
+
+
+Agent Introspect:8085
+===========
+
+
+
+
+
+Control Introspect:8083
+=============
+1)
+View of all nodes in the Ifmap
+http://10.140.218.16:8083/Snh_IFMapTableShowReq?table_name=
+http://10.140.218.16:8083/Snh_IFMapLinkTableShowReq
+
+2)
+Details of each node in the ifmap
+http://10.140.218.16:8083/Snh_IFMapNodeTableListShowReq
+http://10.140.218.16:8083/Snh_IFMapTableShowReq?x=route-table
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

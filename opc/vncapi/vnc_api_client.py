@@ -70,8 +70,8 @@ def set_quota(project_id):
 	quota.virtual_machine_interface = 3
 	proj_obj.set_quota(quota)
 	conn.project_update(proj_obj)
-project_id = str(uuid.UUID("68df249de3994dcaa1046e4c953f03c1"))
-set_quota(project_id)
+#project_id = str(uuid.UUID("68df249de3994dcaa1046e4c953f03c1"))
+#set_quota(project_id)
 
 
 
