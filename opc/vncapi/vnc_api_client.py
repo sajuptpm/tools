@@ -26,7 +26,8 @@ def get_vnc_conn():
 	auth_port = auth_url.split(':')[2].split("/")[0]
 
 	#Contrail API Server IP and Port
-	api_server_ip = "10.140.218.12"
+	#api_server_ip = "10.140.218.12"
+	api_server_ip = os.environ['API_SERVER_IP']
 	api_server_port = 8082
 
 	# Retry till a api-server is up
