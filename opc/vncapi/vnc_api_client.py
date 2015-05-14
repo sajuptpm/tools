@@ -12,6 +12,7 @@
 import os
 import time
 import uuid
+import requests
 from vnc_api import vnc_api
 
 
