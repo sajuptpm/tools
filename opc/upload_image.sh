@@ -21,6 +21,7 @@ export OS_TENANT_NAME=admin
 export OS_AUTH_URL=http://127.0.0.1:35357/v2.0
 
 image_file=cirros-0.3.2-x86_64-disk.img
+#image_file=cirros-0.3.4-x86_64-disk.img
 
 if [ -f "$image_file" ]
 then
@@ -30,6 +31,7 @@ else
     echo "Downloading cirros-0.3.2-x86_64-disk.img ....."
     echo ""
     wget http://download.cirros-cloud.net/0.3.2/cirros-0.3.2-x86_64-disk.img
+    #wget http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
 fi
 
 echo "Uploading image cirros-0.3.2-x86_64-disk.img ....."
