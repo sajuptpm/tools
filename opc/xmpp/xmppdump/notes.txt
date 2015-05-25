@@ -1,0 +1,32 @@
+
+https://github.com/balthorium/xmppdump
+
+
+1)
+Find Ports of the services running in the contrail controller
+
+#sudo netstat -tuplen | grep contrail-contr
+
+tcp        0      0 0.0.0.0:5269            0.0.0.0:*               LISTEN
+119        12997       1856/contrail-contr
+tcp        0      0 0.0.0.0:8083            0.0.0.0:*               LISTEN
+119        13076       1856/contrail-contr
+tcp        0      0 0.0.0.0:179             0.0.0.0:*               LISTEN
+119        12996       1856/contrail-contr
+
+
+2)
+Ports used by contrail controller services:
+ 
+a) 179 : BGP
+b) 5269 : XMPP server for vRouter agent to connect to
+c) 8083 : introspect for debugging
+
+
+3)
+How to use xmppdump:
+#./xmppdump <xmpp server port>
+#./xmppsump 5269
+#./xmppsump 5269 > output.txt
+
+
